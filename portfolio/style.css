@@ -1,0 +1,74 @@
+/* Reset default margin and padding */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Global styles */
+body {
+    font-family: Arial, sans-serif;
+    background: radial-gradient(circle, rgba(237, 191, 211, 1) 16%, rgba(151, 190, 236, 1) 100%);
+    color: #333;
+}
+
+/* Navbar styles */
+.navbar {
+    background-color: #333;
+    padding: 10px;
+    text-align: right;
+}
+
+ .navbar a {
+    color: #fff;
+    text-decoration: none;
+    padding: 10px 20px;
+} 
+
+
+.name {
+    color: #fff;
+    font-size: 24px;
+    font-weight: bold;
+    text-decoration: none;
+    margin-left: 20px;
+}
+
+.main {
+    padding: 50px;
+    text-align: center;
+    padding-top: 10%;
+    padding-left: 7%;
+    color: #333; 
+    font-family: 'Arial', sans-serif; 
+}
+
+
+h1 {
+    font-size: 75px;
+}
+
+h2 {
+    font-size: 48px;
+    margin-bottom: 30px;
+}
+
+.icon {
+    width: 50px;
+    height: 50px;
+    margin: 20px;
+    padding: 10px;
+    size: 50px;
+}
+
+/* Responsive styles */
+@media screen and (max-width: 768px) {
+    .navbar {
+        text-align: center;
+    }
+
+    .navbar a {
+        display: block;
+        padding: 10px 0;
+    }
+}

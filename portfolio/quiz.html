@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Web Development Quiz</title>
+    <link rel="stylesheet" href="style4.css">
+</head>
+<body>
+    <div class="quiz-container">
+        <h1>Web Development Quiz</h1>
+        <form id="quiz-form">
+            <div class="question">
+                <p>1. What does HTML stand for?</p>
+                <input type="radio" name="q1" value="a">a) Hyper Text Markup Language<br>
+                <input type="radio" name="q1" value="b">b) Home Tool Markup Language<br>
+                <input type="radio" name="q1" value="c">c) Hyperlinks and Text Markup Language<br>
+            </div>
+            <div class="question">
+                <p>2. Which of the following is not a programming language?</p>
+                <input type="radio" name="q2" value="a">a) HTML<br>
+                <input type="radio" name="q2" value="b">b) CSS<br>
+                <input type="radio" name="q2" value="c">c) FTP<br>
+            </div>
+            <div class="question">
+                <p>3. What does CSS stand for?</p>
+                <input type="radio" name="q3" value="a">a) Computer Style Sheets<br>
+                <input type="radio" name="q3" value="b">b) Creative Style Sheets<br>
+                <input type="radio" name="q3" value="c">c) Cascading Style Sheets<br>
+            </div>
+            <div class="question">
+                <p>4. Which programming language is commonly used for web development?</p>
+                <input type="radio" name="q4" value="a">a) Python<br>
+                <input type="radio" name="q4" value="b">b) Java<br>
+                <input type="radio" name="q4" value="c">c) JavaScript<br>
+            </div>
+            <div class="question">
+                <p>5. What does the acronym "HTTP" stand for?</p>
+                <input type="radio" name="q5" value="a">a) Hyper Transfer Text Protocol<br>
+                <input type="radio" name="q5" value="b">b) Hypertext Transfer Protocol<br>
+                <input type="radio" name="q5" value="c">c) Hyperlink Text Transfer Protocol<br>
+            </div>
+            <div class="question">
+                <p>6. What is the purpose of JavaScript in web development?</p>
+                <input type="radio" name="q6" value="a">a) To style web pages<br>
+                <input type="radio" name="q6" value="b">b) To create web layouts<br>
+                <input type="radio" name="q6" value="c">c) To add interactivity to websites<br>
+            </div>
+            <div class="question">
+                <p>7. Which tag is used to define a hyperlink in HTML?</p>
+                <input type="radio" name="q7" value="a">a) &lt;hyper&gt;<br>
+                <input type="radio" name="q7" value="b">b) &lt;a&gt;<br>
+                <input type="radio" name="q7" value="c">c) &lt;link&gt;<br>
+            </div>
+            <div class="question">
+                <p>8. What is the purpose of CSS frameworks like Bootstrap?</p>
+                <input type="radio" name="q8" value="a">a) To improve server-side performance<br>
+                <input type="radio" name="q8" value="b">b) To provide pre-designed website templates<br>
+                <input type="radio" name="q8" value="c">c) To execute JavaScript code<br>
+            </div>
+            <div class="question">
+                <p>9. What is the purpose of a CSS preprocessor?</p>
+                <input type="radio" name="q9" value="a">a) To convert CSS code into HTML<br>
+                <input type="radio" name="q9" value="b">b) To enhance the capabilities of CSS<br>
+                <input type="radio" name="q9" value="c">c) To create server-side scripts<br>
+            </div>
+            <div class="question">
+                <p>10. Which of the following is not a commonly used JavaScript library?</p>
+                <input type="radio" name="q10" value="a">a) jQuery<br>
+                <input type="radio" name="q10" value="b">b) React<br>
+                <input type="radio" name="q10" value="c">c) Django<br>
+            </div>
+
+            <button type="submit">Submit</button>
+        </form>
+    </div>
+
+    <div class="score-container">
+        <h1>Quiz Score and Answers</h1>
+        <div id="score"></div>
+        <div id="answers"></div>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            const quizForm = document.getElementById('quiz-form');
+            const scoreContainer = document.getElementById('score');
+            const answersContainer = document.getElementById('answers');
+
+            const questions = [
+            {
+                question: 'What does HTML stand for?',
+                answer: 'a'
+            },
+            {
+                question: 'Which of the following is not a programming language?',
+                answer: 'c'
+            },
+            {
+                question: 'What does CSS stand for?',
+                answer: 'c'
+            },
+            {
+                question: 'Which programming language is commonly used for web development?',
+                answer: 'c'
+            },
+            {
+                question: 'What does the acronym "HTTP" stand for?',
+                answer: 'b'
+            },
+            {
+                question: 'What is the purpose of JavaScript in web development?',
+                answer: 'c'
+            },
+            {
+                question: 'Which tag is used to define a hyperlink in HTML?',
+                answer: 'b'
+            },
+            {
+                question: 'What is the purpose of CSS frameworks like Bootstrap',
+                answer: 'b'
+            },
+            {
+                question: 'What is the purpose of a CSS preprocessor?',
+                answer: 'b'
+            },
+            {
+                question: 'Which of the following is not a commonly used JavaScript library?',
+                answer: 'c'
+            }
+        ];
+
+               
+
+            quizForm.addEventListener('submit', function (event) {
+                event.preventDefault();
+
+                let score = 0;
+                const userAnswers = [];
+
+                for (let i = 0; i < questions.length; i++) {
+                    const selectedAnswer = document.querySelector(`input[name=q${i + 1}]:checked`);
+                    if (selectedAnswer) {
+                        const answer = selectedAnswer.value;
+                        userAnswers.push({ questionNumber: i + 1, selectedAnswer: answer });
+
+                        if (answer === questions[i].answer) {
+                            score++;
+                        }
+                    }
+                }
+
+                // Display score
+                scoreContainer.innerHTML = `<p>Your score: ${score} out of ${questions.length}</p>`;
+
+                // Display answers
+                answersContainer.innerHTML = '<h2>Correct Answers:</h2>';
+                questions.forEach((question, index) => {
+                    answersContainer.innerHTML += `<p>Question ${index + 1}: Correct answer is ${question.answer.toUpperCase()}</p>`;
+                });
+
+                // Show score and answers page
+                document.querySelector('.score-container').style.display = 'block';
+
+                // Redirect to score page with parameters
+              /*  const urlParams = new URLSearchParams();
+                urlParams.append('score', score);
+                urlParams.append('totalQuestions', questions.length);
+                urlParams.append('answers', JSON.stringify(userAnswers));
+                const scorePageUrl = `score.html?${urlParams.toString()}`;
+                setTimeout(() => { window.location.href = scorePageUrl; }, 100); */
+            });
+        });
+    </script>
+</body>
+</html>
